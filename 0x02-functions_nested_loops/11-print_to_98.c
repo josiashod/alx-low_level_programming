@@ -15,13 +15,13 @@ void print_to_98(int n)
 
 	if (n > 98)
 	{
-		breakpoint = n;
-		n = 98;
+		for (; n > 98; n--)
+			printf("%d, ", n);
 	}
-
-	for (; n < breakpoint; n++)
+	else
 	{
-		printf("%d, ", n);
+		for (; n < 98; n++)
+			printf("%d, ", n);
 	}
 
 	printf("%d\n", breakpoint);
