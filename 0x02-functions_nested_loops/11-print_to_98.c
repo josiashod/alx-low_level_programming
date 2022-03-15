@@ -18,7 +18,7 @@ void print_to_98(int n)
 		n = 98;
 	}
 
-	for (n; n < breakpoint; n++)
+	for (; n < breakpoint; n++)
 	{
 		printf("%d, ", n);
 	}
