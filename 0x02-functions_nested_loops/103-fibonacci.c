@@ -9,9 +9,9 @@
 int main(void)
 {
 	int i;
-	unsigned long int u0 = 0, u1 = 1, u, sum = 0;
+	unsigned long int u0 = 0, u1 = 1, u = 0, sum = 0;
 
-	for (i = 0; (i < 50 && u < 4000000); i++)
+	for (i = 0; i < 32; i++)
 	{
 		u = u0 + u1;
 
@@ -21,6 +21,8 @@ int main(void)
 		u0 = u1;
 		u1 = u;
 	}
+
+	printf("%lu\n", sum);
 
 	return (0);
 }
