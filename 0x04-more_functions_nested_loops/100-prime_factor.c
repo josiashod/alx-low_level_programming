@@ -11,7 +11,7 @@ int main(void)
 {
 	long largest = 0, number = 612852475143, div = 2;
 
-	while(number != 0)
+	while (number != 0)
 	{
 		if (number % div != 0)
 		{
@@ -27,7 +27,6 @@ int main(void)
 				break;
 			}
 		}
-		
 	}
 
 	return (0);
