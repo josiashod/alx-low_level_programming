@@ -11,8 +11,7 @@ int _atoi(char *s)
 	unsigned int num = 0;
 	int signe = 1;
 
-	do
-	{
+	do {
 		if (*s == '-')
 			signe *= -1;
 		else if (*s >= '0' && *s <= '9')
