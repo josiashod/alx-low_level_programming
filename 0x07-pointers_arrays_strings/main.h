@@ -1,4 +1,6 @@
 #include <stddef.h>
+#include <stdio.h>
+
 /**
  * File: main.h
  * Author: Josias DJOSSOU-DAN
