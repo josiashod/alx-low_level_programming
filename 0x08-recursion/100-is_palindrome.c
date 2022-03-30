@@ -1,4 +1,5 @@
 #include "main.h"
+#include <string.h>
 
 /**
  * is_equal - check if the caractere at
@@ -28,10 +29,7 @@ int is_equal(int start, int end, char *s)
  */
 int is_palindrome(char *s)
 {
-	int len = 0;
-
-	while (s[len] != '\0')
-		len++;
+	int len = strlen(s);
 
 	if (len == 0)
 		return (1);
