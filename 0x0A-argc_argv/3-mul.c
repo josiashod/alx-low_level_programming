@@ -18,9 +18,10 @@ int main(int argc, char **argv)
 		for (i = 1; i < argc; i++)
 			mul *= atoi(argv[i]);
 		printf("%d\n", mul);
+		return (0);
 	}
 	else
 		printf("Error\n");
 
-	return (0);
+	return (1);
 }
