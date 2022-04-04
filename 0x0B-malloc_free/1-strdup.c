@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
  * _strdup - allocate space in memory,
  * which contains a copy of the string
@@ -12,12 +12,12 @@
 char *_strdup(char *str)
 {
 	char *new_str;
-	int i = 0;
+	unsigned int i = 0;
 
 	if (!str)
 		return (str);
 
-	new_str = malloc(sizeof(str));
+	new_str = malloc(sizeof(str) * 10);
 
 	while (str[i] != '\0')
 	{
