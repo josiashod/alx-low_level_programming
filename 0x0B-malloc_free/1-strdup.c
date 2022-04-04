@@ -11,9 +11,7 @@ int _strlen(char *s)
 	int i = 0;
 
 	while (s[i] != '\0')
-	{
 		i++;
-	}
 
 	return (i);
 }
@@ -42,6 +40,7 @@ char *_strdup(char *str)
 		new_str[i] = str[i];
 		i++;
 	}
+	new_str[i] = '\0';
 
 	return (new_str);
 }
