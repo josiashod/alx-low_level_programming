@@ -30,10 +30,13 @@ char *_strdup(char *str)
 	char *new_str;
 	unsigned int i = 0;
 
-	if (!str)
-		return (str);
+	if (str == NULL)
+		return (NULL);
 
 	new_str = malloc(sizeof(char) * (_strlen(str) + 1));
+
+	if (new_str == NULL)
+		return (NULL);
 
 	while (str[i] != '\0')
 	{
