@@ -1,5 +1,23 @@
 #include "main.h"
-#include <stdio.h>
+
+/**
+ * _strlen - returns the length of a string.
+ * @s: string whose length should be return
+ *
+ * Return: (int) the length of the string.
+ */
+int _strlen(char *s)
+{
+	int i = 0;
+
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+
+	return (i);
+}
+
 /**
  * _strdup - allocate space in memory,
  * which contains a copy of the string
@@ -17,7 +35,7 @@ char *_strdup(char *str)
 	if (!str)
 		return (str);
 
-	new_str = malloc(sizeof(str) * 10);
+	new_str = malloc(sizeof(str) * (_strlen(str) + 1));
 
 	while (str[i] != '\0')
 	{
