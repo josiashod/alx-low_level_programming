@@ -54,7 +54,10 @@ char **strtow(char *str)
 {
 	char **new_str;
 	int size = 0, line_size, i = 0, j = 0, k;
-
+	
+	if (str == NULL || str == "")
+		return (NULL);
+	
 	size = arr_size(str);
 	new_str = (char **) malloc(sizeof(char *) * (size + 1));
 
