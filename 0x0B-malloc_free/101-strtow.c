@@ -54,21 +54,18 @@ char **strtow(char *str)
 {
 	char **new_str;
 	int size = 0, line_size, i = 0, j = 0, k;
-	
-	if (str == NULL || str == "")
+
+	if (str == NULL || str[0] == '\0')
 		return (NULL);
-	
 	size = arr_size(str);
 	new_str = (char **) malloc(sizeof(char *) * (size + 1));
 
 	if (!new_str)
 		return (new_str);
-
 	while (i < size)
 	{
 		while (str[j] && str[j] == ' ')
 			j++;
-
 		line_size = string_size(str + j);
 		new_str[i] = (char *) malloc(sizeof(char) * (line_size + 1));
 		if (!new_str[i])
