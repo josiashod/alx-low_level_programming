@@ -34,6 +34,7 @@ void print_float(va_list arg)
 void print_string(va_list arg)
 {
 	char *s;
+
 	if (arg == NULL)
 		s = "(nil)";
 	else
