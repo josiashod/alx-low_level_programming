@@ -35,12 +35,12 @@ void print_string(va_list arg)
 {
 	char *s;
 
-	if (arg == NULL)
+	s = va_arg(arg, char *);
+	if (s == NULL)
 	{
 		printf("(nil)");
 		return;
 	}
-	s = va_arg(arg, char *);
 	printf("%s", s);
 }
 
