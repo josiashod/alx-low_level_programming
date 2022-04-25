@@ -11,13 +11,17 @@ int pop_listint(listint_t **head)
 	listint_t *new_head;
 	int n;
 
-	/* getting the next element of the list */
-	new_head = (*head)->next;
-	/* store the vale of the head node */
-	n = (*head)->n;
-	/* free the head */
-	free(*head);
-	/* change the head value  */
-	*head = new_head;
-	return (n);
+	if (*head)
+	{
+		/* getting the next element of the list */
+		new_head = (*head)->next;
+		/* store the vale of the head node */
+		n = (*head)->n;
+		/* free the head */
+		free(*head);
+		/* change the head value  */
+		*head = new_head;
+		return (n);
+	}
+	return (0);
 }
