@@ -11,6 +11,9 @@ int check_binary(const char *b)
 {
 	int len = 0;
 
+	if (b == NULL)
+		return (0);
+
 	while (b[len])
 	{
 		if (b[len] != '0' && b[len] != '1')
