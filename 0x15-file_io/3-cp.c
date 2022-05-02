@@ -28,15 +28,15 @@ char *init_buffer(char *filename)
  * @fd: file descriptor
  *
  */
-void _close(ssize_t fd)
+void _close(int fd)
 {
-	ssize_t cl;
+	int cl;
 
 	cl = close(fd);
 
 	if (cl == -1)
 	{
-		dprintf(STDERR_FILENO, "Can't close fd %li\n", fd);
+		dprintf(STDERR_FILENO, "Can't close fd %d\n", fd);
 		exit(100);
 	}
 }
@@ -50,7 +50,7 @@ void _close(ssize_t fd)
  */
 int main(int argc, char **argv)
 {
-	ssize_t file_from, file_to, rd, wr;
+	int file_from, file_to, rd, wr;
 	char *buffer;
 
 	if (argc != 3)
@@ -67,16 +67,16 @@ int main(int argc, char **argv)
 	do {
 		if (file_from == -1 || rd == -1)
 		{
-			free(buffer);
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			free(buffer);
 			exit(98);
 		}
 
-		wr = write(file_to, buffer, 1024);
+		wr = write(file_to, buffer, rd);
 		if (wr == -1 || file_to == -1)
 		{
-			free(buffer);
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			free(buffer);
 			exit(99);
 		}
 
@@ -88,5 +88,6 @@ int main(int argc, char **argv)
 	free(buffer);
 	_close(file_from);
 	_close(file_to);
+
 	return (0);
 }
