@@ -72,7 +72,7 @@ int main(int argc, char **argv)
 		{
 			free(buffer);
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			exit(97);
+			exit(98);
 		}
 
 		wr = write(file_to, buffer, 1024);
