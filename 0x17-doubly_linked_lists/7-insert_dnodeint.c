@@ -11,12 +11,13 @@
  * Return: NULL if node does not exit and the node if
  * it exist.
  */
-dlistint_t *insert_dnodeint_at_index(dlistint_t **head, unsigned int idx, int n)
+dlistint_t *insert_dnodeint_at_index(dlistint_t **head,
+unsigned int idx, int n)
 {
-	dlistint_t *prev, *new, *dlist = *head;
+	dlistint_t *prev, *new;
 	unsigned int i = 0;
 
-	while (dlist)
+	while (head)
 	{
 		if (idx == i)
 		{
@@ -26,25 +27,19 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **head, unsigned int idx, int n)
 			new->n = n;
 
 			if (i == 0)
-			{
-				return (add_dnodeint(head, n));
-			}
-
-			if (!dlist->next)
-			{
 				return (add_dnodeint_end(head, n));
-			}
 
 			new->next = prev->next;
 			new->prev = prev;
-			prev->next->prev = new;
+			if (prev->next)
+				prev->next->prev = new;
 			prev->next = new;
 			return (new);
 		}
 		else if (idx == (i + 1))
-			prev = dlist;
+			prev = *head;
 
-		dlist = dlist->next;
+		head = &(*head)->next;
 		i++;
 	}
 
