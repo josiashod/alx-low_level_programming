@@ -26,11 +26,6 @@ unsigned int idx, int n)
 				return (NULL);
 			new->n = n;
 
-			if (i == 0)
-				return (add_dnodeint(head, n));
-			if (!dlist->next)
-				return (add_dnodeint_end(head, n));
-
 			new->next = prev->next;
 			new->prev = prev;
 			if (prev->next)
