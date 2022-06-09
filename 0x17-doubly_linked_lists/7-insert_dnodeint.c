@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stdio.h>
 
 /**
  * insert_dnodeint_at_index - find the nth node of a dlistint_t
@@ -35,7 +36,8 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **head, unsigned int idx, int n)
 			}
 			new->next = prev->next;
 			new->prev = prev;
-			prev->next->prev = new;
+			if (prev->next)
+				prev->next->prev = new;
 			prev->next = new;
 			return (new);
 		}
