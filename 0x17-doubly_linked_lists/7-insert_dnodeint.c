@@ -21,10 +21,13 @@ unsigned int idx, int n)
 	{
 		if (idx == i)
 		{
+			if (i == 0)
+				return (add_dnodeint(head, n));
+
 			new = malloc(sizeof(dlistint_t));
+			new->n = n;
 			if (!new)
 				return (NULL);
-			new->n = n;
 
 			new->next = prev->next;
 			new->prev = prev;
@@ -39,6 +42,8 @@ unsigned int idx, int n)
 		dlist = dlist->next;
 		i++;
 	}
+	if (!dlist && i == idx)
+		return (add_dnodeint_end(head, n));
 
 	return (NULL);
 }
