@@ -22,11 +22,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		h_node = malloc(sizeof(hash_node_t));
 		if (h_node == NULL)/* check allocation failed */
 			return (0);
-
 		h_node->key = strdup(key);
 		h_node->value = strdup(value);
 		h_node->next = NULL;
-
 		ht->array[hash_key] = h_node;
 	}
 	else /* update linked list at the index */
@@ -36,7 +34,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		while (h_node->next && strcmp(h_node->key, key) != 0)
 			h_node = h_node->next;
 		if (!strcmp(h_node->key, key))/* if key exist in list & update it */
+		{
+			free(h_node->value);
 			h_node->value = strdup(value);
+		}
 		else /* otherwise add it to the list */
 		{
 			h_node = malloc(sizeof(hash_node_t));
