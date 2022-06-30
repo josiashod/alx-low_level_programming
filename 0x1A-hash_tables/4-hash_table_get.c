@@ -22,20 +22,9 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 		return (NULL);
 
 	h_node = ht->array[hash_key];
+	/* search the node with the matching key */
+	while (h_node && strcmp(h_node->key, key) != 0)
+		h_node = h_node->next;
 
-	if (h_node->next)/* check if the list has another values */
-	{
-		/* search the node with the matching key */
-		while (h_node && strcmp(h_node->key, key) != 0)
-			h_node = h_node->next;
-	}
-
-	if (!h_node) /* nothing was found */
-		return (NULL);
-
-	/* check if the node key matches the needed key  */
-	else if (strcmp(h_node->key, key) != 0)
-		return (NULL);
-
-	return (h_node->value);
+	return ((h_node == NULL) ? NULL : h_node->value);
 }
