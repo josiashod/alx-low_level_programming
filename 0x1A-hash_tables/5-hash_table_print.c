@@ -17,7 +17,7 @@ void hash_table_print(const hash_table_t *ht)
 
 		if (ht->array[i])
 		{
-			if (i > 0 && can_print_comma)
+			if (can_print_comma)
 				printf(", ");
 
 			h_node = ht->array[i];
