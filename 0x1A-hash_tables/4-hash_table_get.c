@@ -18,6 +18,9 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	if (!ht->array[hash_key])/* check if index is not NULL */
 		return (NULL);
 
+	if (hash_key >= ht->size)
+		return (NULL);
+
 	h_node = ht->array[hash_key];
 
 	if (h_node->next)/* check if the list has another values */
