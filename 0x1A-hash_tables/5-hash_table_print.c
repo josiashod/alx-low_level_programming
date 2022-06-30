@@ -10,11 +10,9 @@ void hash_table_print(const hash_table_t *ht)
 	unsigned long int i;
 	int can_print_comma = 0;
 
+	printf("{");
 	for (i = 0; i < ht->size; i++)
 	{
-		if (i == 0)
-			printf("{");
-
 		if (ht->array[i])
 		{
 			if (can_print_comma)
@@ -30,7 +28,6 @@ void hash_table_print(const hash_table_t *ht)
 				can_print_comma = 1;
 			}
 		}
-		if ((i + 1) == ht->size)
-			printf("}\n");
 	}
+	printf("}\n");
 }
