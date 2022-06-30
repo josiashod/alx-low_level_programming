@@ -25,8 +25,8 @@ void hash_table_print(const hash_table_t *ht)
 				if (h_node->next)
 					printf(", ");
 				h_node = h_node->next;
-				can_print_comma = 1;
 			}
+			can_print_comma = 1;
 		}
 	}
 	printf("}\n");
