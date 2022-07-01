@@ -1,3 +1,6 @@
 [submodule "0x11-_printf"]
 	path = 0x11-_printf
 	url = https://github.com/josiashod/printf.git
+[submodule "0x11-simple_shell"]
+	path = 0x11-simple_shell
+	url = https://github.com/josiashod/simple_shell.git
