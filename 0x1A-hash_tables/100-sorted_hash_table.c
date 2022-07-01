@@ -30,45 +30,59 @@ shash_table_t *shash_table_create(unsigned long int size)
 	return (sh_table);
 }
 
-
 /**
- * shash_table_set - add/update value in the sorted hash table
+ * hash_table_index_update - Update the value matched with the given
+ * key in a sorted hash table that key
  * @ht: the sorted hash table
  * @key: the key of the value
  * @value: the value associated to the key
  *
  * Return: 1 on success, 0 if fail
  */
-int shash_table_set(shash_table_t *ht, const char *key, const char *value)
+int hash_table_index_update(shash_table_t *ht, const char *key,
+const char *value)
 {
-	unsigned long int h_key;
-	shash_node_t *sh_node, *tmp;
+	shash_node_t *sh_node;
 
 	if (ht == NULL || key == NULL || key[0] == '\0' || value == NULL)
 		return (0);
 
-	h_key = key_index((unsigned char *)key, ht->size);
-	tmp = ht->shead;
-	while (tmp) /* handle key value update  */
+	sh_node = ht->shead;
+	while (sh_node)
 	{
-		if (!strcmp(tmp->key, key))
+		if (!strcmp(sh_node->key, key))
 		{
-			free(tmp->value);
-			tmp->value = strdup(value);
+			free(sh_node->value);
+			sh_node->value = strdup(value);
 			return (1);
 		}
-		tmp = tmp->snext;
+		sh_node = sh_node->next;
 	}
 
+	return (0);
+}
+
+/**
+ * hash_table_index_add - Add new value in a sorted hash table that key
+ * @ht: the sorted hash table
+ * @key: the key of the value
+ * @value: the value associated to the key
+ *
+ * Return: 1 on success, 0 if fail
+ */
+int hash_table_index_add(shash_table_t *ht, const char *key, const char *value)
+{
+	unsigned long int h_key;
+	shash_node_t *sh_node, *tmp;
+
+	h_key = key_index((unsigned char *)key, ht->size);
 	sh_node = malloc(sizeof(shash_node_t));
 	if (!sh_node)
 		return (0);
-
 	sh_node->key = strdup(key);
 	sh_node->value = strdup(value);
 	sh_node->next = ht->array[h_key];
 	ht->array[h_key] = sh_node;
-
 	if (!ht->shead)
 	{
 		sh_node->sprev = NULL;
@@ -97,6 +111,25 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		tmp->snext = sh_node;
 	}
 	return (1);
+}
+
+/**
+ * shash_table_set - add/update value in a sorted hash table
+ * @ht: the sorted hash table
+ * @key: the key of the value
+ * @value: the value associated to the key
+ *
+ * Return: 1 on success, 0 if fail
+ */
+int shash_table_set(shash_table_t *ht, const char *key, const char *value)
+{
+	if (ht == NULL || key == NULL || key[0] == '\0' || value == NULL)
+		return (0);
+
+	if (hash_table_index_update(ht, key, value)) /* handle key value update  */
+		return (1);
+
+	return (hash_table_index_add(ht, key, value));
 }
 
 /**
