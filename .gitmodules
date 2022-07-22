@@ -10,3 +10,6 @@
 [submodule "0x19-stacks_queues-LIFO_FIFO"]
 	path = 0x19-stacks_queues-LIFO_FIFO
 	url = https://github.com/josiashod/monty.git
+[submodule "0x20-sorting_algorithms"]
+	path = 0x20-sorting_algorithms
+	url = https://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@github.com/josiashod/sorting_algorithms.git
