@@ -12,7 +12,7 @@
 	url = https://github.com/josiashod/monty.git
 [submodule "0x20-sorting_algorithms"]
 	path = 0x20-sorting_algorithms
-	url = https://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@github.com/josiashod/sorting_algorithms.git
+	url = https://github.com/josiashod/sorting_algorithms.git
 [submodule "0x1D-binary_trees"]
 	path = 0x1D-binary_trees
-	url = https://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@github.com/josiashod/binary_trees.git
+	url = https://github.com/josiashod/binary_trees.git
